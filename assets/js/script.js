@@ -33,4 +33,40 @@ const getData = () => [
     {imgSrc:"../assets/images/Oxygen.jpg", name:"oxygen"},
 ]
 
-console.log(getData);
+//randomize cards 
+
+const randomize = () => {
+    const cardData = getData();
+    cardData.sort(() => Math.random() -0.5);
+    return(cardData);
+} 
+
+randomize();
+
+//create the cards
+
+const cardCreator = () => {
+    const cardData = randomize();
+
+// create the HTML
+
+cardData.forEach((item) => {
+        card.classList = 'card';
+        front.classList = 'front';
+        back.classList = 'back';
+//attach the images to the cards
+
+card.setAttribute('name', item.name);
+
+//put cards in section
+
+section.appendChild(card);
+card.appendChild(front);
+card.appendChild(back);
+
+card.addEventListener('click', (e) => {
+    card.classList.toggle('toggleCard');
+    checkCards(e);
+});
+});
+};
